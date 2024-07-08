@@ -298,7 +298,7 @@ margin: 0;
 padding-top: 5px;
 }
 .rd{
-background-color: #f8f8fa3a;
+background-color: #f8f8fa2a;
 /* width: 100%; */
 height: 300px;
 border-radius: 15px;
@@ -319,10 +319,98 @@ font-size:small;
 }
 .rd input{
 width: 90%;
-/* font-size: 10px;; */
-
+height: 2.5%;
+-webkit-appearance: none;
+outline:none;
+background: #f2f2f2;
+border-radius:25px;
+box-shadow: inset 0px 0px 4px rgba(0,0,0,0.2);
 }
+.rd input::-moz-range-thumb{
+    height: 10px;
+    border-radius: 25px;
+    background-color: #3498db;
+}
+.rd input::-moz-range-thumb{
+    height: 20px;
+    width: 20px;
+    border-radius: 50%;
+    border:4px solid #3498db;
+    background-color: white;
+    -webkit-appearance:none;
+}
+/* input[type="range"]{
+-webkit-appearance: none;
+background-color: #1261a0;
+height:1px;
+border-radius:5px;
+padding:5px 0;
+}*/
+/* input[type="range"]::-webkit-slider-thumb{
+    appearance:none;
+    height: 20px;
+    width: 20px;
+    border-radius:50%;
+    background-color: #6775c4e0;
+    border: 2px;
+    border-color: #ffffff;
+    box-shadow: 0 0  3px #ffffffd8;
+    
+}   */
 .recommended{
     border-top-right-radius: 15px;
     border-bottom-right-radius:15px;
+}
+.icons{
+    display: flex;
+    justify-content: center;
+}
+.icons{
+    
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 5%;
+    /* background-color: #ffffff; */
+
+}
+/* #ffffff3b */
+.icons button{
+    position: relative;
+    border-radius: 50%;
+    /* margin: 25px; */
+    border: none;
+    background-color:#ffffff8a ;
+    box-shadow: 0px 1px 10px #ffffff9a;
+ 
+}
+.forward, .backward{
+       width: 30px;
+    height: 30px;
+}.play{
+    width: 40px;
+    height: 40px;
+}.play i{
+    padding: 10px;
+    margin-left: 2px;
+    font-size: 20px;
+}
+.forward i, .backward i{
+    padding: 7px;
+    font-size: 15px;
+}
+.icons button i{
+    /* padding: 100%; */
+    /* background-color: #f10e0e; */
+    position: absolute;
+    color: #ffffff;
+    border-radius: 50%;
+    border: none;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height: 30px;
+
+    /* width: 50px;
+    height: 50px; */
 }
