@@ -1,0 +1,89 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document22</title>
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<style>
+    /* html,body{
+            position:relative;
+            height: 100%;
+        } */
+        .swiper-wrapper{
+            width:100%;
+            height:100%;
+        }
+       /* body{
+            padding:0;
+            margin:0;
+        } */
+       .swiper-slide{
+            /* width:auto; */
+            height:400px;
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+
+        }
+        img{
+            display:block;
+            width:50%;
+            height: auto;
+        
+        }
+</style>
+</head>
+<body>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide"> 
+                <img src="./image&Video/Smooth Jazz Journey.jpg">
+            </div>
+            <div class="swiper-slide"> 
+                <img src="./image&Video/Relaxing Tones.jpg">
+            </div>
+            <div class="swiper-slide"> 
+                <img src="./image&Video/Party Starters.jpg">
+            </div>
+            <div class="swiper-slide"> 
+                <img src="./image&Video/Midnight Moods.jpg" alt="Midnight Moods">
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+
+    </div>
+
+    <script>
+        var swiper= new Swiper(".swiper",{
+            // effect:"coverflow",
+            grabCursor:true,
+            centerdSlide:true,
+            loop:true,
+            speed:600,
+            slidesPreView:"auto",
+            coverflowEffect:{
+                rotate:100,
+                depth:50,
+                stretch:10,
+                modifier:1,
+                // slideShadowes:true,
+            }
+            
+            // ,autoplay:{
+            //     delay:5000,
+            //     disableOnInteraction:false,
+            // }
+
+        })
+    </script>
+</body>
+</html>
