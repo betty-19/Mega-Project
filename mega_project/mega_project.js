@@ -31,54 +31,60 @@ var swiper = new Swiper(".mySwiper", {
       artist = document.querySelector(".artist"),
 
       slider=document.querySelector(".duration-slider"),
-      circle = document.querySelector(".music");
+      circle = document.querySelector(".pause");
+      let timer;
       let track = document.createElement("audio");
       let indexTrack=0;
       let songIsPlaying = false;
 
       play.addEventListener("click", justPlay);
       next.addEventListener("click", nextSong);
-      previous.addEventListener("click" , previousSong)
+      previous.addEventListener("click" , previousSong);
+      slider.addEventListener("change", changeDuration);
      
 
 
       function loadTrack(indexTrack){
+        clearInterval(timer);
+        resetSlider();
         track.src= trackList[indexTrack].path;
         trackImage.src= trackList[indexTrack].img;
         title.innerHTML= trackList[indexTrack].name;
         artist.innerHTML = trackList[indexTrack].singer;
         track.load();
+      
+        timer = setInterval(updateSlider,1000);
       }
 
       loadTrack(indexTrack);
 
 
-
+      
 
       function justPlay(){
         if (songIsPlaying == false){
+          
           playSong();
-
         }
         else{
           pauseSong();
+          
         }
+        trackImage.classList.toggle('play');
       }
+
 function playSong() {
     track.play();
-    trackImage.classList.add("spin-animation");
     songIsPlaying = true;
-    play.innerHTML = '<li style="padding:10px;margin-left:3px;font-size: 20px; position: absolute;color: #ffffff;border-radius: 50%;border: none;top: 0;left: 0;width: 30px;height: 30px;" class="fas fa-pause"></li>';
+    play.innerHTML = '<i style="padding:10px;margin-left:3px;font-size: 20px; position: absolute;color: #ffffff;border-radius: 50%;border: none;top: 0;left: 0;width: 30px;height: 30px;" class="fas fa-pause"></i>';
 }
-
 function pauseSong() {
     track.pause();
-    trackImage.classList.remove("spin-animation");
     songIsPlaying = false;
-    play.innerHTML = '<li style="padding:10px;margin-left:3px;font-size: 20px; position: absolute;color: #ffffff;border-radius: 50%;border: none;top: 0;left: 0;width: 30px;height: 30px;" class="fas fa-play"></li>';
+    play.innerHTML = '<i style="padding:10px;margin-left:3px;font-size: 20px; position: absolute;color: #ffffff;border-radius: 50%;border: none;top: 0;left: 0;width: 30px;height: 30px;" class="fas fa-play"></i>';
 }
-
       function nextSong(){
+        trackImage.classList.remove('play');
         if(indexTrack==trackList.length-1){
           indexTrack=0;
         }
@@ -87,19 +93,42 @@ function pauseSong() {
         }
         songIsPlaying=false;
         loadTrack(indexTrack);
+       
         justPlay();
+        
 
       }
       function previousSong(){
+      trackImage.classList.remove('play');
         songIsPlaying=false;
         if(indexTrack==0){
             indexTrack=trackList.length-1;
+
         }
         else{
           indexTrack-=1;
         }
         loadTrack(indexTrack);
+        
         justPlay();
       }
    
-  
+  function changeDuration(){
+    let sliderPosition = track.duration * (slider.value / 100);
+    track.currentTime = sliderPosition;
+  }
+
+  function resetSlider(){
+    slider.value = 0;
+  }
+  function updateSlider(){
+    let position = 0;
+    if(!isNaN(track.duration)){
+       position = track.currentTime * (100 / track.duration);
+       slider.value = position;
+    }
+    if( track.ended){
+      slider.value = 0;
+      play.innerHTML='<li style="padding:10px;margin-left:3px;font-size: 20px; position: absolute;color: #ffffff;border-radius: 50%;border: none;top: 0;left: 0;width: 30px;height: 30px;" class="fas fa-play"></li>';
+    }
+  }
